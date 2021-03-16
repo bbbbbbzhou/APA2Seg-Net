@@ -1,6 +1,6 @@
 # Anatomy-guided Multimodal Registration by Learning Segmentation without Ground Truth: Application to Intraprocedural CBCT/MR Liver Segmentation and Registration
 
-Bo Zhou, S. Kevin Zhou, Chi Liu, James S. Duncan
+Bo Zhou, Zachary Augenfeld, Julius Chapiro, S. Kevin Zhou, Chi Liu, James S. Duncan
 
 Medical Image Analysis (MedIA), 2021
 
@@ -62,7 +62,6 @@ Our code has been tested with Python 3.7, Pytorch 1.4.0, CUDA 10.0 on Ubuntu 18.
     │   └── IMG_MRI_M_mask.png          
     └── 
 
-
 train_MRI.txt contains the .png file names with content of
 
     IMG_MRI_1.png 
@@ -71,7 +70,6 @@ train_MRI.txt contains the .png file names with content of
     ...
     IMG_MRI_K.png    
 
-
 train_CT.txt contains the .png file names with content of
 
     IMG_MRI_1.png 
@@ -79,7 +77,6 @@ train_CT.txt contains the .png file names with content of
     IMG_MRI_3.png 
     ...
     IMG_MRI_N.png  
-
 
 train_CT.txt contains the .png file names with content of
 
