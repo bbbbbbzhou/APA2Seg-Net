@@ -62,21 +62,27 @@ Our code has been tested with Python 3.7, Pytorch 1.4.0, CUDA 10.0 on Ubuntu 18.
     │   └── IMG_MRI_M_mask.png          
     └── 
 
+
 train_MRI.txt contains the .png file names with content of
+
     IMG_MRI_1.png 
     IMG_MRI_2.png
     IMG_MRI_3.png 
     ...
     IMG_MRI_K.png    
 
+
 train_CT.txt contains the .png file names with content of
+
     IMG_MRI_1.png 
     IMG_MRI_2.png
     IMG_MRI_3.png 
     ...
     IMG_MRI_N.png  
 
+
 train_CT.txt contains the .png file names with content of
+
     IMG_MRI_K+1.png 
     IMG_MRI_K+2.png
     IMG_MRI_K+3.png 
