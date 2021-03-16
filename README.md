@@ -36,14 +36,14 @@ Our code has been tested with Python 3.7, Pytorch 1.4.0, CUDA 10.0 on Ubuntu 18.
 
 ### Dataset Setup
     .
-    preprocess/MRI_SEG           # data setup for MRI segmentation (target domain) from CT (source domain)
+    preprocess/MRI_SEG/PROC/       # data setup for MRI segmentation (target domain) from CT (source domain)
     ├── train_MRI.txt
     │
     ├── train_CT.txt
     │
     ├── test_MRI.txt
     │
-    ├── CT                        # contain CT training data (index by train_CT.txt)
+    ├── DCT                        # contain CT training data (index by train_CT.txt)
     │   ├── IMG_CT_1.png     
     │   ├── IMG_CT_1_mask.png   
     │   ├── IMG_CT_2.png     
@@ -86,9 +86,8 @@ train_CT.txt contains the .png file names with content of
     ...
     IMG_MRI_M.png  
 
+IMG_CT_N.png is a 2D image and IMG_CT_N_mask.png is its segmentation.
 
-Each .mat should contain a W x W complex value matrix with kspace data in it, where W x W is the kspace size. 
-Please note the variable name should be set as 'kspace_py'.
 Then, please add the data directory './Data/' after --data_root in the code or scripts.
 
 ### To Run Our Code
