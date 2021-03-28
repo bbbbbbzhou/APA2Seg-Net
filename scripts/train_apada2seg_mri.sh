@@ -1,0 +1,23 @@
+CUDA_VISIBLE_DEVICES=0 python main.py \
+--name experiment_apada2seg \
+--raw_A_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_A_seg_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--sub_list_A ./preprocess/MRI_SEG/PROC/train_DCT.txt \
+--sub_list_B ./preprocess/MRI_SEG/PROC/train_MRI.txt \
+--batchSize 2 \
+--angle 15 \
+--model apada2seg_model_train \
+--which_model_netS duseunet \
+--pool_size 50 \
+--no_dropout \
+--apada2seg_run_model Train \
+--dataset_mode apada2seg_train \
+--input_nc 1  \
+--output_nc 1 \
+--output_nc_seg 2 \
+--seg_norm DiceNorm \
+--lambda_cc 0.1 \
+--lambda_mind 0.1 \
+--checkpoints_dir ./Checkpoints/MRI/ \
+--display_id 0

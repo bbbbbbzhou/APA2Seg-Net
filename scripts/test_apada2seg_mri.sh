@@ -1,0 +1,23 @@
+python main.py \
+--name experiment_apada2seg \
+--raw_A_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_A_seg_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--sub_list_A ./preprocess/MRI_SEG/PROC/train_DCT.txt \
+--sub_list_B ./preprocess/MRI_SEG/PROC/train_MRI.txt \
+--batchSize 1 \
+--model apada2seg_model_test \
+--which_model_netS duseunet \
+--pool_size 50 \
+--no_dropout \
+--apada2seg_run_model TestSeg \
+--dataset_mode apada2seg_test \
+--input_nc 1  \
+--seg_norm DiceNorm \
+--output_nc 1 \
+--output_nc_seg 2 \
+--test_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--test_img_list_file ./preprocess/MRI_SEG/PROC/test_MRI.txt \
+--test_seg_output_dir ./Output/MRI/experiment_apada2seg \
+--checkpoints_dir ./Checkpoints/MRI/ \
+--which_epoch_S 10

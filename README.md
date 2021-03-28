@@ -4,7 +4,7 @@ Bo Zhou, Zachary Augenfeld, Julius Chapiro, S. Kevin Zhou, Chi Liu, James S. Dun
 
 Medical Image Analysis (MedIA), 2021
 
-[[Paper](http://openaccess.thecvf.com/content_CVPR_2020/papers/Zhou_DuDoRNet_Learning_a_Dual-Domain_Recurrent_Network_for_Fast_MRI_Reconstruction_CVPR_2020_paper.pdf)]
+[[Paper](https://www.sciencedirect.com/science/article/pii/S1361841521000876)]
 
 This repository contains the PyTorch implementation of APA2Seg-Net.
 
@@ -13,10 +13,9 @@ If you use this code for your research or project, please cite:
 
     @article{zhou2021anatomy,
       title={Anatomy-guided Multimodal Registration by Learning Segmentation without Ground Truth: Application to Intraprocedural CBCT/MR Liver Segmentation and Registration},
-      author={Zhou, Bo and Augenfeld, Zachary and Chapiro, Julius and Zhou, S. Kevin and Liu, Chi and Duncan, James S.},
+      author={Zhou, Bo and Augenfeld, Zachary and Chapiro, Julius and Zhou, S Kevin and Liu, Chi and Duncan, James S},
       journal={Medical Image Analysis},
-      volume={xxx},
-      pages={xxx},
+      pages={102041},
       year={2021},
       publisher={Elsevier}
     }
@@ -87,6 +86,11 @@ train_CT.txt contains the .png file names with content of
     IMG_MRI_M.png  
 
 IMG_CT_N.png is a 2D image and IMG_CT_N_mask.png is its segmentation.
+
+
+
+
+
 
 Then, please add the data directory './Data/' after --data_root in the code or scripts.
 
