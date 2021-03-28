@@ -87,36 +87,77 @@ train_CT.txt contains the .png file names with content of
 
 IMG_CT_N.png is a 2D image and IMG_CT_N_mask.png is its segmentation.
 
+For training, please specify the training data directory in the code options using: \
+`--raw_A_dir` provides the domain A image data folder directory. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/DCT/ . \
+`--raw_A_seg_dir` provides the domain A image's segmentation data folder directory. It should be identical to above, which is ./preprocess/MRI_SEG/PROC/DCT/ . \
+`--sub_list_A` provides the directory of .txt file containing domain A's image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/train_DCT.txt . \
+`--raw_B_dir` provides the domain B image data folder directory. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/MRI/ . \
+`--raw_B_seg_dir` provides the domain B image's segmentation data folder directory. It should be identical to above, which is ./preprocess/MRI_SEG/PROC/MRI/ . \
+`--sub_list_B` provides the directory of .txt file containing domain B's image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/train_MRI.txt . \
 
-
-
-
-
-Then, please add the data directory './Data/' after --data_root in the code or scripts.
+For testing, please specify the test data directory in the code options using: \
+`--test_B_dir` provides the domain B test image data folder directory. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/MRI/ . \
+`--test_img_list_file` provides the directory of .txt file containing domain B's test image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/test_MRI.txt . \
+`--test_seg_ouput_dir` provides the prediction output directory. \
 
 ### To Run Our Code
 - Train the model
 ```bash
-python train.py --experiment_name 'train_DuDoRN_R4_pT1' --data_root './Data/' --dataset 'Cartesian' --netG 'DRDN' --n_recurrent 4 --use_prior --protocol_ref 'T1' --protocol_tag 'T2'
+python main.py \
+--name experiment_apada2seg \
+--raw_A_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_A_seg_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--sub_list_A ./preprocess/MRI_SEG/PROC/train_DCT.txt \
+--sub_list_B ./preprocess/MRI_SEG/PROC/train_MRI.txt \
+--batchSize 2 \
+--angle 15 \
+--model apada2seg_model_train \
+--which_model_netS duseunet \
+--pool_size 50 \
+--no_dropout \
+--apada2seg_run_model Train \
+--dataset_mode apada2seg_train \
+--input_nc 1  \
+--output_nc 1 \
+--output_nc_seg 2 \
+--seg_norm DiceNorm \
+--lambda_cc 0.1 \
+--lambda_mind 0.1 \
+--checkpoints_dir ./Checkpoints/MRI/ \
+--display_id 0
 ```
 where \
-`--experiment_name` provides the experiment name for the current run, and save all the corresponding results under the experiment_name's folder. \
-`--data_root`  provides the data folder directory (with structure illustrated above). \
-`--n_recurrent` defines number of recurrent blocks in the DuDoRNet. \
-`--protocol_tag` defines target modality to be reconstruct, e.g. T2 or FLAIR. \
-`--protocol_ref` defines modality to be used as prior, e.g. T1. \
-`--use_prior` defines whether to use prior as indicated by protocol_ref. \
+`--lambda_cc` defines the weights parameter for cc loss. \
+`--lambda_mind`  defines the weights parameter for MIND loss. \
 Other hyperparameters can be adjusted in the code as well.
 
 - Test the model
 ```bash
-python test.py --experiment_name 'test_DuDoRN_R4_pT1' --accelerations 5 --resume './outputs/train_DuDoRN_R4_pT1/checkpoints/model_259.pt' --data_root './Data/' --dataset 'Cartesian' --netG 'DRDN' --n_recurrent 4 --use_prior --protocol_ref 'T1' --protocol_tag 'T2'
+python main.py \
+--name experiment_apada2seg \
+--raw_A_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_A_seg_dir ./preprocess/MRI_SEG/PROC/DCT/ \
+--raw_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--sub_list_A ./preprocess/MRI_SEG/PROC/train_DCT.txt \
+--sub_list_B ./preprocess/MRI_SEG/PROC/train_MRI.txt \
+--batchSize 1 \
+--model apada2seg_model_test \
+--which_model_netS duseunet \
+--pool_size 50 \
+--no_dropout \
+--apada2seg_run_model TestSeg \
+--dataset_mode apada2seg_test \
+--input_nc 1  \
+--seg_norm DiceNorm \
+--output_nc 1 \
+--output_nc_seg 2 \
+--test_B_dir ./preprocess/MRI_SEG/PROC/MRI/ \
+--test_img_list_file ./preprocess/MRI_SEG/PROC/test_MRI.txt \
+--test_seg_output_dir ./Output/MRI/experiment_apada2seg \
+--checkpoints_dir ./Checkpoints/MRI/ \
+--which_epoch_S 10
 ```
-where \
-`--accelerations` defines the acceleration factor, e.g. 5 for 5 fold accelerations. \
-`--resume` defines which checkpoint for testing and evaluation. \
-The test will output an eval.mat containing model's input, reconstruction prediction, and ground-truth for evaluation.
-
 Sample training/test scripts are provided under './scripts/' and can be directly executed.
 
 

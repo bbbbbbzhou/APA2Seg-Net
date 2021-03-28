@@ -1,4 +1,4 @@
-CUDA_VISIBLE_DEVICES=0 python main.py \
+python main.py \
 --name experiment_apada2seg \
 --raw_A_dir ./preprocess/MRI_SEG/PROC/DCT/ \
 --raw_A_seg_dir ./preprocess/MRI_SEG/PROC/DCT/ \
