@@ -164,8 +164,7 @@ Sample training/test scripts are provided under './scripts/' and can be directly
 
 ### Registration based on APA2Seg-Net
 Please refer to the Yale BioImage Suite (Command Line Version) for implementation of our registeration pipeline.
-
-[[BIS Link]((https://bioimagesuiteweb.github.io/bisweb-manual/CommandLineTools.html)]
+[[BIS Link](https://bioimagesuiteweb.github.io/bisweb-manual/CommandLineTools.html)]
 
 
 ### Contact 
