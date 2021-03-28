@@ -93,12 +93,13 @@ For training, please specify the training data directory in the code options usi
 `--sub_list_A` provides the directory of .txt file containing domain A's image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/train_DCT.txt . \
 `--raw_B_dir` provides the domain B image data folder directory. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/MRI/ . \
 `--raw_B_seg_dir` provides the domain B image's segmentation data folder directory. It should be identical to above, which is ./preprocess/MRI_SEG/PROC/MRI/ . \
-`--sub_list_B` provides the directory of .txt file containing domain B's image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/train_MRI.txt . \
+`--sub_list_B` provides the directory of .txt file containing domain B's image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/train_MRI.txt . 
 
 For testing, please specify the test data directory in the code options using: \
 `--test_B_dir` provides the domain B test image data folder directory. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/MRI/ . \
 `--test_img_list_file` provides the directory of .txt file containing domain B's test image file names. In MRI segmentation example, it should be ./preprocess/MRI_SEG/PROC/test_MRI.txt . \
-`--test_seg_ouput_dir` provides the prediction output directory. \
+`--test_seg_ouput_dir` provides the prediction output directory. 
+
 
 ### To Run Our Code
 - Train the model
@@ -128,7 +129,7 @@ python main.py \
 --display_id 0
 ```
 where \
-`--lambda_cc` defines the weights parameter for cc loss. \
+`--lambda_cc` defines the weights parameter for CC loss. \
 `--lambda_mind`  defines the weights parameter for MIND loss. \
 Other hyperparameters can be adjusted in the code as well.
 
@@ -159,6 +160,11 @@ python main.py \
 --which_epoch_S 10
 ```
 Sample training/test scripts are provided under './scripts/' and can be directly executed.
+
+
+### Registration based on APA2Seg-Net
+Please refer to the Yale BioImage Suite (Command Line Version) for implementation of our registeration pipeline.
+[[BIS Link]((https://bioimagesuiteweb.github.io/bisweb-manual/CommandLineTools.html)]
 
 
 ### Contact 
