@@ -38,11 +38,11 @@ Our code has been tested with Python 3.7, Pytorch 1.4.0, CUDA 10.0 on Ubuntu 18.
     preprocess/MRI_SEG/PROC/       # data setup for MRI segmentation (target domain) from CT (source domain)
     ├── train_MRI.txt
     │
-    ├── train_CT.txt
+    ├── train_DCT.txt
     │
     ├── test_MRI.txt
     │
-    ├── DCT                        # contain CT training data (index by train_CT.txt)
+    ├── DCT                        # contain CT training data (index by train_DCT.txt)
     │   ├── IMG_CT_1.png     
     │   ├── IMG_CT_1_mask.png   
     │   ├── IMG_CT_2.png     
@@ -51,7 +51,7 @@ Our code has been tested with Python 3.7, Pytorch 1.4.0, CUDA 10.0 on Ubuntu 18.
     │   ├── IMG_CT_N.png     
     │   └── IMG_CT_N_mask.png 
     │
-    ├── MRI                       # contain both MRI training and testing data (index by train_MRI.txt and test_MRI.txt)
+    ├── MRI                        # contain both MRI training and testing data (index by train_MRI.txt and test_MRI.txt)
     │   ├── IMG_MRI_1.png     
     │   ├── IMG_MRI_1_mask.png   
     │   ├── IMG_MRI_2.png     
@@ -69,13 +69,13 @@ train_MRI.txt contains the .png file names with content of
     ...
     IMG_MRI_K.png    
 
-train_CT.txt contains the .png file names with content of
+train_DCT.txt contains the .png file names with content of
 
-    IMG_MRI_1.png 
-    IMG_MRI_2.png
-    IMG_MRI_3.png 
+    IMG_CT_1.png 
+    IMG_CT_2.png
+    IMG_CT_3.png 
     ...
-    IMG_MRI_N.png  
+    IMG_CT_N.png  
 
 train_CT.txt contains the .png file names with content of
 
