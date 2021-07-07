@@ -77,7 +77,7 @@ train_DCT.txt contains the .png file names with content of
     ...
     IMG_CT_N.png  
 
-train_CT.txt contains the .png file names with content of
+test_MRI.txt contains the .png file names with content of
 
     IMG_MRI_K+1.png 
     IMG_MRI_K+2.png
